@@ -63,7 +63,7 @@ class LocationTests: XCTestCase {
         performNotEqualTestWithLocationProperties(firstName: "home", secondName: "work", firstLongLat: (0,0), secondLongLat: (0,0))
     }
     
-    // MARK: Initializer
+    // MARK: Initialization
     
     func testInitShouldSetName() {
         let location = Location(name: "test name")
