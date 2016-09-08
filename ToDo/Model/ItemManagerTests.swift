@@ -76,5 +76,18 @@ class ItemManagerTests: XCTestCase {
         
         XCTAssertEqual(item.title, doneItem.title)
     }
-
+    
+    func testRemoveAllItems_ShouldResultInCountsBeZero() {
+        sut.addItem(ToDoItem(title: "first"))
+        sut.addItem(ToDoItem(title: "second"))
+        sut.checkItemAtIndex(0)
+        
+        XCTAssertEqual(sut.toDoCount, 1, "toDoCount should be 1")
+        XCTAssertEqual(sut.doneCount, 1, "doneCount should be 1")
+        
+        sut.removeAllItems()
+        
+        XCTAssertEqual(sut.toDoCount, 0, "toDoCount should be 0")
+        XCTAssertEqual(sut.toDoCount, 0, "doneCount should be 0")
+    }
 }
