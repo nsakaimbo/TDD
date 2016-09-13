@@ -7,29 +7,48 @@
 //
 
 import XCTest
+@testable import ToDo
 
 class ItemListViewControllerTests: XCTestCase {
 
+    var sut: ItemListViewController!
+    
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        sut = storyboard.instantiateViewControllerWithIdentifier(String(ItemListViewController)) as! ItemListViewController
+        
+        // trigger the call of viewDidLoad(_:)
+        _ = sut.view
+    }
+    
+    
+    func test_TableViewIsNotNilAfterViewDidLoad() {
+        
+        XCTAssertNotNil(sut.tableView)
+    }
+    
+    func testViewDidLoad_TableViewDataSourceDelegateNotNil() {
+        
+        XCTAssertNotNil(sut.tableView.dataSource)
+        XCTAssertNotNil(sut.tableView.delegate)
+        
+    }
+    
+    func testViewDidLoad_ShouldSetDelegateAndDataSourceToTheSameObject() {
+        
+        guard let dataSource = sut.tableView.dataSource,
+            let delegate = sut.tableView.delegate else {
+                XCTFail("Either the delegate and/or data source are not instantiated.")
+                return
+        }
+        
+        XCTAssertTrue(dataSource === delegate)
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
+        sut = nil
     }
-
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }
