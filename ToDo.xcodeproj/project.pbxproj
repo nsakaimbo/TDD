@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F20CEA51D883C2D00A157A9 /* ItemListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F20CEA41D883C2D00A157A9 /* ItemListViewControllerTests.swift */; };
+		5F20CEA81D883D1D00A157A9 /* ItemListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F20CEA71D883D1D00A157A9 /* ItemListViewController.swift */; };
 		5F68ADF31D748F8500F62643 /* LocationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F68ADF21D748F8500F62643 /* LocationTests.swift */; };
 		5F68ADF51D74932700F62643 /* ToDoItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F68ADF41D74932700F62643 /* ToDoItemTests.swift */; };
 		5FDC1C9B1D79AE24000EF150 /* ItemManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDC1C9A1D79AE24000EF150 /* ItemManagerTests.swift */; };
@@ -31,6 +33,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5F20CEA41D883C2D00A157A9 /* ItemListViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemListViewControllerTests.swift; path = Controller/ItemListViewControllerTests.swift; sourceTree = "<group>"; };
+		5F20CEA71D883D1D00A157A9 /* ItemListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemListViewController.swift; path = Controller/ItemListViewController.swift; sourceTree = "<group>"; };
 		5F68ADF21D748F8500F62643 /* LocationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationTests.swift; path = ToDo/Model/LocationTests.swift; sourceTree = SOURCE_ROOT; };
 		5F68ADF41D74932700F62643 /* ToDoItemTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ToDoItemTests.swift; path = ToDo/Model/ToDoItemTests.swift; sourceTree = SOURCE_ROOT; };
 		5FDC1C9A1D79AE24000EF150 /* ItemManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemManagerTests.swift; path = ToDo/Model/ItemManagerTests.swift; sourceTree = SOURCE_ROOT; };
@@ -76,6 +80,22 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		5F20CEA61D883C3E00A157A9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				5F20CEA41D883C2D00A157A9 /* ItemListViewControllerTests.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		5F20CEA91D883D4400A157A9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				5F20CEA71D883D1D00A157A9 /* ItemListViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
 		5FE7F9A51D74739E00A2E4E6 = {
 			isa = PBXGroup;
 			children = (
@@ -104,6 +124,7 @@
 				5FE7F9BA1D74739E00A2E4E6 /* LaunchScreen.storyboard */,
 				5FE7F9BD1D74739E00A2E4E6 /* Info.plist */,
 				5FE7F9D31D74818A00A2E4E6 /* Model */,
+				5F20CEA91D883D4400A157A9 /* Controller */,
 			);
 			path = ToDo;
 			sourceTree = "<group>";
@@ -113,6 +134,7 @@
 			children = (
 				5F20CEA31D883B8D00A157A9 /* Model */,
 				5FE7F9C81D74739E00A2E4E6 /* Info.plist */,
+				5F20CEA61D883C3E00A157A9 /* Controller */,
 			);
 			path = ToDoTests;
 			sourceTree = "<group>";
@@ -233,6 +255,7 @@
 				5FE7F9B21D74739E00A2E4E6 /* AppDelegate.swift in Sources */,
 				5FE7F9D51D748C5900A2E4E6 /* Location.swift in Sources */,
 				5FE7F9D21D74817A00A2E4E6 /* ToDoItem.swift in Sources */,
+				5F20CEA81D883D1D00A157A9 /* ItemListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,6 +266,7 @@
 				5FDC1C9B1D79AE24000EF150 /* ItemManagerTests.swift in Sources */,
 				5F68ADF51D74932700F62643 /* ToDoItemTests.swift in Sources */,
 				5F68ADF31D748F8500F62643 /* LocationTests.swift in Sources */,
+				5F20CEA51D883C2D00A157A9 /* ItemListViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
