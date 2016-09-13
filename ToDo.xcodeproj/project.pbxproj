@@ -66,6 +66,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5F20CEA31D883B8D00A157A9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5F68ADF41D74932700F62643 /* ToDoItemTests.swift */,
+				5F68ADF21D748F8500F62643 /* LocationTests.swift */,
+				5FDC1C9A1D79AE24000EF150 /* ItemManagerTests.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		5FE7F9A51D74739E00A2E4E6 = {
 			isa = PBXGroup;
 			children = (
@@ -101,10 +111,8 @@
 		5FE7F9C51D74739E00A2E4E6 /* ToDoTests */ = {
 			isa = PBXGroup;
 			children = (
-				5F68ADF41D74932700F62643 /* ToDoItemTests.swift */,
-				5F68ADF21D748F8500F62643 /* LocationTests.swift */,
+				5F20CEA31D883B8D00A157A9 /* Model */,
 				5FE7F9C81D74739E00A2E4E6 /* Info.plist */,
-				5FDC1C9A1D79AE24000EF150 /* ItemManagerTests.swift */,
 			);
 			path = ToDoTests;
 			sourceTree = "<group>";
