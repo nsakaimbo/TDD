@@ -10,6 +10,12 @@ import UIKit
 
 class ItemListDataProvider: NSObject, UITableViewDataSource, UITableViewDelegate {
 
+    weak var itemManager: ItemManager?
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 2
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 0
     }
