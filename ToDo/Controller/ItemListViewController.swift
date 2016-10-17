@@ -11,7 +11,7 @@ import UIKit
 class ItemListViewController: UIViewController {
 
     @IBOutlet var tableView: UITableView!
-    @IBOutlet var tableViewDelegateDataSource: protocol<UITableViewDataSource, UITableViewDelegate>!
+    @IBOutlet var tableViewDelegateDataSource: (UITableViewDataSource & UITableViewDelegate)!
     
     override func viewDidLoad() {
         tableView.dataSource = tableViewDelegateDataSource

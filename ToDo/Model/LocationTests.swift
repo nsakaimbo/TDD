@@ -16,7 +16,7 @@ class LocationTests: XCTestCase {
     // MARK: Equality
     
     // Helper method for Equality testing
-    private func performNotEqualTestWithLocationProperties(firstName firstName: String,
+    fileprivate func performNotEqualTestWithLocationProperties(firstName: String,
                                                                      secondName: String,
                                                                      firstLongLat: (Double, Double)?,
                                                                      secondLongLat: (Double, Double)?) {

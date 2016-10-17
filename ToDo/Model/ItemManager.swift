@@ -13,20 +13,20 @@ class ItemManager {
     var toDoCount: Int { return toDoItems.count }
     var doneCount: Int { return doneItems.count }
    
-    private var toDoItems = [ToDoItem]()
-    private var doneItems = [ToDoItem]()
+    fileprivate var toDoItems = [ToDoItem]()
+    fileprivate var doneItems = [ToDoItem]()
     
-    func addItem(item: ToDoItem) {
+    func addItem(_ item: ToDoItem) {
         guard !toDoItems.contains(item) else { return }
         toDoItems.append(item)
     }
     
-    func itemAtIndex(index: Int) -> ToDoItem {
+    func itemAtIndex(_ index: Int) -> ToDoItem {
         return toDoItems[index]
     }
     
     func checkItemAtIndex(_ index: Int) {
-        let item = toDoItems.removeAtIndex(index)
+        let item = toDoItems.remove(at: index)
         doneItems.append(item)
     }
     
