@@ -41,6 +41,28 @@ class ItemListDataProvider: NSObject, UITableViewDataSource, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ItemCell.self), for: indexPath) as! ItemCell
+        
+        guard let itemManager = self.itemManager else {
+            fatalError("Error. Could not establish reference to itemManager object.")
+        }
+        
+        guard let section = Section(rawValue: indexPath.section) else {
+            fatalError("Error. Could not instantiate valid section reference")
+        }
+        
+        let item: ToDoItem
+        
+        switch section {
+        case .ToDo:
+            item = itemManager.itemAtIndex(indexPath.row)
+        case .Done:
+            item = itemManager.doneItemAtIndex(indexPath.row)
+        }
+        
+        cell.configCellWithItem(item)
+        
+        return cell
     }
 }
