@@ -82,4 +82,10 @@ class ItemListDataProvider: NSObject, UITableViewDataSource, UITableViewDelegate
         
         return buttonTitle
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        itemManager?.checkItemAtIndex(indexPath.row)
+        tableView.reloadData()
+    }
 }

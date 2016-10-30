@@ -64,6 +64,8 @@ class ItemListDataProviderTests: XCTestCase {
         tableView.delegate = sut
     }
    
+    // MARK: Section and row count
+    
     func testNumberOfSectionsIsTwo() {
         XCTAssertEqual(tableView.numberOfSections, 2)
     }
@@ -89,6 +91,8 @@ class ItemListDataProviderTests: XCTestCase {
         tableView.reloadData()
         XCTAssertEqual(tableView.numberOfRows(inSection: 1), 2)
     }
+    
+    // MARK: Cell Configuration
     
     func testCellForRow_ReturnsItemCell() {
         sut.itemManager?.addItem(ToDoItem(title: "first"))
@@ -144,6 +148,8 @@ class ItemListDataProviderTests: XCTestCase {
         XCTAssertEqual(cell.toDoItem, secondItem)
     }
     
+    // MARK: Deletion
+    
     func testDeletionButtonInFirstSection_ShowsTitleCheck() {
         
         let deleteButtonTitle = tableView.delegate?.tableView?(tableView, titleForDeleteConfirmationButtonForRowAt: IndexPath(row: 0, section: 0))
@@ -160,5 +166,18 @@ class ItemListDataProviderTests: XCTestCase {
         super.tearDown()
         sut = nil
         tableView = nil
+    }
+    
+    // MARK: - Checking Items
+    func testCheckingAnItem_ChecksItInTheItemManager() {
+        
+        sut.itemManager?.addItem(ToDoItem(title: "first item"))
+        
+        tableView.dataSource?.tableView?(tableView, commit: .delete, forRowAt: IndexPath(row: 0, section: 0))
+        
+        XCTAssertEqual(sut.itemManager?.toDoCount, 0)
+        XCTAssertEqual(sut.itemManager?.doneCount, 1)
+        XCTAssertEqual(tableView.numberOfRows(inSection: 0), 0)
+        XCTAssertEqual(tableView.numberOfRows(inSection: 1), 1)
     }
 }
