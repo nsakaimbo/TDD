@@ -33,7 +33,6 @@ class ItemListViewControllerTests: XCTestCase {
         
         XCTAssertNotNil(sut.tableView.dataSource)
         XCTAssertNotNil(sut.tableView.delegate)
-        
     }
     
     func testViewDidLoad_ShouldSetDelegateAndDataSourceToTheSameObject() {

@@ -61,6 +61,7 @@ class ItemListDataProviderTests: XCTestCase {
         
         tableView = controller.tableView
         tableView.dataSource = sut
+        tableView.delegate = sut
     }
    
     func testNumberOfSectionsIsTwo() {
@@ -143,6 +144,18 @@ class ItemListDataProviderTests: XCTestCase {
         XCTAssertEqual(cell.toDoItem, secondItem)
     }
     
+    func testDeletionButtonInFirstSection_ShowsTitleCheck() {
+        
+        let deleteButtonTitle = tableView.delegate?.tableView?(tableView, titleForDeleteConfirmationButtonForRowAt: IndexPath(row: 0, section: 0))
+        XCTAssertEqual(deleteButtonTitle, "Check")
+    }
+    
+    func testDeletionButtonInSecondSection_ShowsTitleUncheck() {
+        
+        let deleteButtonTitle = tableView.delegate?.tableView?(tableView, titleForDeleteConfirmationButtonForRowAt: IndexPath(row: 0, section: 1))
+        XCTAssertEqual(deleteButtonTitle, "Uncheck")
+    }
+
     override func tearDown() {
         super.tearDown()
         sut = nil

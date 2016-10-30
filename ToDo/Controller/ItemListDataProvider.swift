@@ -65,4 +65,21 @@ class ItemListDataProvider: NSObject, UITableViewDataSource, UITableViewDelegate
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        
+        guard let section = Section(rawValue: indexPath.section) else {
+            fatalError("Could not establish valid section for section title.")
+        }
+        
+        let buttonTitle: String
+        switch section {
+        case .ToDo:
+            buttonTitle = "Check"
+        case .Done:
+            buttonTitle = "Uncheck"
+        }
+        
+        return buttonTitle
+    }
 }
