@@ -61,7 +61,7 @@ class ItemListDataProvider: NSObject, UITableViewDataSource, UITableViewDelegate
             item = itemManager.doneItemAtIndex(indexPath.row)
         }
         
-        cell.configCellWithItem(item)
+        cell.config(with: item)
         
         return cell
     }

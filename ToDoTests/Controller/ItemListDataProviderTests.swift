@@ -35,7 +35,7 @@ extension ItemListDataProviderTests {
         
         var toDoItem: ToDoItem?
         
-        override func configCellWithItem(_ item: ToDoItem) {
+        override func config(with item: ToDoItem, isChecked: Bool = false) {
             toDoItem = item
         }
     }
