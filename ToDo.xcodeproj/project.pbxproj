@@ -23,6 +23,9 @@
 		5FE7F9D21D74817A00A2E4E6 /* ToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7F9D11D74817A00A2E4E6 /* ToDoItem.swift */; };
 		5FE7F9D51D748C5900A2E4E6 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7F9D41D748C5900A2E4E6 /* Location.swift */; };
 		5FEDE43C1DC694920039D870 /* ItemCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEDE43B1DC694920039D870 /* ItemCellTests.swift */; };
+		5FFAE2371DCFBD6A00C098F1 /* DetailViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFAE2361DCFBD6A00C098F1 /* DetailViewControllerTests.swift */; };
+		5FFAE2391DCFBE1700C098F1 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFAE2381DCFBE1700C098F1 /* DetailViewController.swift */; };
+		5FFAE23C1DCFC1AA00C098F1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FFAE23B1DCFC1AA00C098F1 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +59,9 @@
 		5FE7F9D11D74817A00A2E4E6 /* ToDoItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ToDoItem.swift; path = Model/ToDoItem.swift; sourceTree = "<group>"; };
 		5FE7F9D41D748C5900A2E4E6 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Location.swift; path = Model/Location.swift; sourceTree = "<group>"; };
 		5FEDE43B1DC694920039D870 /* ItemCellTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemCellTests.swift; path = ../ToDo/Controller/ItemCellTests.swift; sourceTree = "<group>"; };
+		5FFAE2361DCFBD6A00C098F1 /* DetailViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailViewControllerTests.swift; path = ToDo/Controller/DetailViewControllerTests.swift; sourceTree = SOURCE_ROOT; };
+		5FFAE2381DCFBE1700C098F1 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailViewController.swift; path = Controller/DetailViewController.swift; sourceTree = "<group>"; };
+		5FFAE23B1DCFC1AA00C098F1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FFAE23C1DCFC1AA00C098F1 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,6 +99,7 @@
 				5F20CEA41D883C2D00A157A9 /* ItemListViewControllerTests.swift */,
 				5F7FCE331D98BB9E0080824B /* ItemListDataProviderTests.swift */,
 				5FEDE43B1DC694920039D870 /* ItemCellTests.swift */,
+				5FFAE2361DCFBD6A00C098F1 /* DetailViewControllerTests.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -102,6 +110,7 @@
 				5F20CEA71D883D1D00A157A9 /* ItemListViewController.swift */,
 				5F7FCE311D98B5D70080824B /* ItemListDataProvider.swift */,
 				5F86FCC91DBD8A5E00A2E705 /* ItemCell.swift */,
+				5FFAE2381DCFBE1700C098F1 /* DetailViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -112,6 +121,7 @@
 				5FE7F9B01D74739E00A2E4E6 /* ToDo */,
 				5FE7F9C51D74739E00A2E4E6 /* ToDoTests */,
 				5FE7F9AF1D74739E00A2E4E6 /* Products */,
+				5FFAE23A1DCFC1AA00C098F1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -156,6 +166,14 @@
 				5FDC1C9C1D79AF36000EF150 /* ItemManager.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		5FFAE23A1DCFC1AA00C098F1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5FFAE23B1DCFC1AA00C098F1 /* MapKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,6 +227,11 @@
 					5FE7F9AD1D74739E00A2E4E6 = {
 						CreatedOnToolsVersion = 7.3.1;
 						LastSwiftMigration = 0800;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					5FE7F9C11D74739E00A2E4E6 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -268,6 +291,7 @@
 				5F86FCCA1DBD8A5E00A2E705 /* ItemCell.swift in Sources */,
 				5FE7F9D21D74817A00A2E4E6 /* ToDoItem.swift in Sources */,
 				5F20CEA81D883D1D00A157A9 /* ItemListViewController.swift in Sources */,
+				5FFAE2391DCFBE1700C098F1 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,6 +303,7 @@
 				5F7FCE341D98BB9E0080824B /* ItemListDataProviderTests.swift in Sources */,
 				5FDC1C9B1D79AE24000EF150 /* ItemManagerTests.swift in Sources */,
 				5F68ADF51D74932700F62643 /* ToDoItemTests.swift in Sources */,
+				5FFAE2371DCFBD6A00C098F1 /* DetailViewControllerTests.swift in Sources */,
 				5F68ADF31D748F8500F62643 /* LocationTests.swift in Sources */,
 				5F20CEA51D883C2D00A157A9 /* ItemListViewControllerTests.swift in Sources */,
 			);
