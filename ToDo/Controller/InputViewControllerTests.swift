@@ -122,6 +122,34 @@ class InputViewControllerTests: XCTestCase {
         XCTAssertEqual(action, "save")
     }
     
+    func test_GeocoderWorksAsExpected() {
+        
+        let expectationForGeocoder = expectation(description: "Wait for geocode")
+        
+        CLGeocoder().geocodeAddressString("infinite loop 1") { (placemarks, error) in
+            
+            let placemark = placemarks?.first
+            
+            let coordinate = placemark?.location?.coordinate
+            
+            guard let latitude = coordinate?.latitude,
+                let longitude = coordinate?.longitude else {
+                    XCTFail("Error. Could not fetch valid latitude and longitude from coordinate.")
+                    return
+            }
+            
+            XCTAssertEqualWithAccuracy(latitude, 37.3316851, accuracy: 0.0001)
+            
+            
+            XCTAssertEqualWithAccuracy(longitude, -122.0300674, accuracy: 0.0001)
+           
+            
+            expectationForGeocoder.fulfill()
+        }
+        
+        waitForExpectations(timeout: 3, handler: nil)
+    }
+    
     override func tearDown() {
         sut = nil
         super.tearDown()
