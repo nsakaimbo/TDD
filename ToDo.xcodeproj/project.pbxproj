@@ -14,6 +14,8 @@
 		5F7FCE321D98B5D70080824B /* ItemListDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7FCE311D98B5D70080824B /* ItemListDataProvider.swift */; };
 		5F7FCE341D98BB9E0080824B /* ItemListDataProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7FCE331D98BB9E0080824B /* ItemListDataProviderTests.swift */; };
 		5F86FCCA1DBD8A5E00A2E705 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F86FCC91DBD8A5E00A2E705 /* ItemCell.swift */; };
+		5F9EE1E21DD8EB0B00FAE108 /* APIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9EE1E11DD8EB0B00FAE108 /* APIClientTests.swift */; };
+		5F9EE1E41DD8EB5900FAE108 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9EE1E31DD8EB5900FAE108 /* APIClient.swift */; };
 		5FB1F5881DD4C223007B0039 /* InputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB1F5871DD4C223007B0039 /* InputViewController.swift */; };
 		5FB1F58A1DD4C250007B0039 /* InputViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB1F5891DD4C250007B0039 /* InputViewControllerTests.swift */; };
 		5FDC1C9B1D79AE24000EF150 /* ItemManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDC1C9A1D79AE24000EF150 /* ItemManagerTests.swift */; };
@@ -48,6 +50,8 @@
 		5F7FCE311D98B5D70080824B /* ItemListDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemListDataProvider.swift; path = Controller/ItemListDataProvider.swift; sourceTree = "<group>"; };
 		5F7FCE331D98BB9E0080824B /* ItemListDataProviderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemListDataProviderTests.swift; path = Controller/ItemListDataProviderTests.swift; sourceTree = "<group>"; };
 		5F86FCC91DBD8A5E00A2E705 /* ItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemCell.swift; path = Controller/ItemCell.swift; sourceTree = "<group>"; };
+		5F9EE1E11DD8EB0B00FAE108 /* APIClientTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIClientTests.swift; path = ToDo/Networking/APIClientTests.swift; sourceTree = SOURCE_ROOT; };
+		5F9EE1E31DD8EB5900FAE108 /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIClient.swift; path = Networking/APIClient.swift; sourceTree = "<group>"; };
 		5FB1F5871DD4C223007B0039 /* InputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InputViewController.swift; path = Controller/InputViewController.swift; sourceTree = "<group>"; };
 		5FB1F5891DD4C250007B0039 /* InputViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InputViewControllerTests.swift; path = ToDo/Controller/InputViewControllerTests.swift; sourceTree = SOURCE_ROOT; };
 		5FDC1C9A1D79AE24000EF150 /* ItemManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemManagerTests.swift; path = ToDo/Model/ItemManagerTests.swift; sourceTree = SOURCE_ROOT; };
@@ -121,6 +125,22 @@
 			name = Controller;
 			sourceTree = "<group>";
 		};
+		5F9EE1DF1DD8EAB400FAE108 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				5F9EE1E11DD8EB0B00FAE108 /* APIClientTests.swift */,
+			);
+			name = Networking;
+			sourceTree = "<group>";
+		};
+		5F9EE1E01DD8EAC900FAE108 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				5F9EE1E31DD8EB5900FAE108 /* APIClient.swift */,
+			);
+			name = Networking;
+			sourceTree = "<group>";
+		};
 		5FE7F9A51D74739E00A2E4E6 = {
 			isa = PBXGroup;
 			children = (
@@ -150,6 +170,7 @@
 				5FE7F9BD1D74739E00A2E4E6 /* Info.plist */,
 				5FE7F9D31D74818A00A2E4E6 /* Model */,
 				5F20CEA91D883D4400A157A9 /* Controller */,
+				5F9EE1E01DD8EAC900FAE108 /* Networking */,
 			);
 			path = ToDo;
 			sourceTree = "<group>";
@@ -160,6 +181,7 @@
 				5F20CEA31D883B8D00A157A9 /* Model */,
 				5FE7F9C81D74739E00A2E4E6 /* Info.plist */,
 				5F20CEA61D883C3E00A157A9 /* Controller */,
+				5F9EE1DF1DD8EAB400FAE108 /* Networking */,
 			);
 			path = ToDoTests;
 			sourceTree = "<group>";
@@ -293,6 +315,7 @@
 				5FB1F5881DD4C223007B0039 /* InputViewController.swift in Sources */,
 				5FDC1C9D1D79AF36000EF150 /* ItemManager.swift in Sources */,
 				5F7FCE321D98B5D70080824B /* ItemListDataProvider.swift in Sources */,
+				5F9EE1E41DD8EB5900FAE108 /* APIClient.swift in Sources */,
 				5FE7F9B21D74739E00A2E4E6 /* AppDelegate.swift in Sources */,
 				5FE7F9D51D748C5900A2E4E6 /* Location.swift in Sources */,
 				5F86FCCA1DBD8A5E00A2E705 /* ItemCell.swift in Sources */,
@@ -312,6 +335,7 @@
 				5FB1F58A1DD4C250007B0039 /* InputViewControllerTests.swift in Sources */,
 				5F68ADF51D74932700F62643 /* ToDoItemTests.swift in Sources */,
 				5FFAE2371DCFBD6A00C098F1 /* DetailViewControllerTests.swift in Sources */,
+				5F9EE1E21DD8EB0B00FAE108 /* APIClientTests.swift in Sources */,
 				5F68ADF31D748F8500F62643 /* LocationTests.swift in Sources */,
 				5F20CEA51D883C2D00A157A9 /* ItemListViewControllerTests.swift in Sources */,
 			);
