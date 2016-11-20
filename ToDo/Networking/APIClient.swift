@@ -16,9 +16,16 @@ extension URLSession: ToDoURLSession {}
 
 class APIClient {
     
+    enum WebServiceError: Error {
+        case dataEmpty
+        case response
+    }
+    
     lazy var session: ToDoURLSession = URLSession.shared
     
-    func loginUser(name: String, password: String, completion: (Error?) -> Void) {
+    var keychainManager: KeychainAccessible?
+    
+    func loginUser(name: String, password: String, completion: @escaping (Error?) -> Void) {
         
         let allowedCharacters = CharacterSet(charactersIn: "/%&?$#+-~@<>|\\*,.()[]{}^!").inverted
         
@@ -36,6 +43,28 @@ class APIClient {
         
         let task = session.dataTask(with: urlRequest) { (data, response, error) in
             
+            guard error == nil else {
+                completion(WebServiceError.response)
+                return
+            }
+            
+            guard let data = data else {
+                completion(WebServiceError.dataEmpty)
+                return
+            }
+            
+            do {
+                let response = try JSONSerialization.jsonObject(with: data, options: [])
+                
+                if let responseDict = response as? [String:Any],
+                    let token = responseDict["token"] as? String {
+                    
+                    self.keychainManager?.setPassword(token, forAccount: "token")
+                }
+            }
+            catch {
+                completion(error)
+            }
         }
         task.resume()
     }
