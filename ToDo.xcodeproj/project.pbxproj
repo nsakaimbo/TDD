@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5F01B6201DE9FA2A00DCF698 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F01B61E1DE9FA2A00DCF698 /* LaunchScreen.storyboard */; };
 		5F01B6211DE9FA2A00DCF698 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F01B61F1DE9FA2A00DCF698 /* Main.storyboard */; };
+		5F01B6231DE9FAA000DCF698 /* StoryboardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F01B6221DE9FAA000DCF698 /* StoryboardTests.swift */; };
 		5F02544E1DE23E6C0011F10A /* KeychainAccessible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F02544D1DE23E6C0011F10A /* KeychainAccessible.swift */; };
 		5F20CEA51D883C2D00A157A9 /* ItemListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F20CEA41D883C2D00A157A9 /* ItemListViewControllerTests.swift */; };
 		5F20CEA81D883D1D00A157A9 /* ItemListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F20CEA71D883D1D00A157A9 /* ItemListViewController.swift */; };
@@ -46,6 +47,7 @@
 /* Begin PBXFileReference section */
 		5F01B61E1DE9FA2A00DCF698 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Storyboards/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5F01B61F1DE9FA2A00DCF698 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Storyboards/Main.storyboard; sourceTree = "<group>"; };
+		5F01B6221DE9FAA000DCF698 /* StoryboardTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StoryboardTests.swift; path = Storyboards/StoryboardTests.swift; sourceTree = "<group>"; };
 		5F02544D1DE23E6C0011F10A /* KeychainAccessible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeychainAccessible.swift; path = Keychain/KeychainAccessible.swift; sourceTree = "<group>"; };
 		5F20CEA41D883C2D00A157A9 /* ItemListViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemListViewControllerTests.swift; path = Controller/ItemListViewControllerTests.swift; sourceTree = "<group>"; };
 		5F20CEA71D883D1D00A157A9 /* ItemListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemListViewController.swift; path = Controller/ItemListViewController.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 			children = (
 				5F01B61E1DE9FA2A00DCF698 /* LaunchScreen.storyboard */,
 				5F01B61F1DE9FA2A00DCF698 /* Main.storyboard */,
+				5F01B6221DE9FAA000DCF698 /* StoryboardTests.swift */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -355,6 +358,7 @@
 				5FB1F58A1DD4C250007B0039 /* InputViewControllerTests.swift in Sources */,
 				5F68ADF51D74932700F62643 /* ToDoItemTests.swift in Sources */,
 				5FFAE2371DCFBD6A00C098F1 /* DetailViewControllerTests.swift in Sources */,
+				5F01B6231DE9FAA000DCF698 /* StoryboardTests.swift in Sources */,
 				5F9EE1E21DD8EB0B00FAE108 /* APIClientTests.swift in Sources */,
 				5F68ADF31D748F8500F62643 /* LocationTests.swift in Sources */,
 				5F20CEA51D883C2D00A157A9 /* ItemListViewControllerTests.swift in Sources */,
