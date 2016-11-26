@@ -10,7 +10,12 @@ import UIKit
 
 class ItemListViewController: UIViewController {
 
-    @IBOutlet var tableView: UITableView!
+    @IBOutlet var tableView: UITableView! {
+        didSet {
+            tableView.tableFooterView = UIView()
+            tableView.separatorInset = UIEdgeInsets.zero
+        }
+    }
     @IBOutlet var tableViewDelegateDataSource: (UITableViewDataSource & UITableViewDelegate)!
     
     let itemManager = ItemManager()
