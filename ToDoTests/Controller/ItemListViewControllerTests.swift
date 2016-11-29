@@ -9,6 +9,28 @@
 import XCTest
 @testable import ToDo
 
+extension ItemListViewControllerTests {
+    
+    class MockTableView: UITableView {
+        
+        var reloadDataWasCalled: Bool = false
+        
+        override func reloadData() {
+            reloadDataWasCalled = true
+        }
+    }
+    
+    class MockNavigationController: UINavigationController {
+        
+        var pushedViewController: UIViewController?
+        
+        override func pushViewController(_ viewController: UIViewController, animated: Bool) {
+            pushedViewController = viewController
+            super.pushViewController(viewController, animated: animated)
+        }
+    }
+}
+
 class ItemListViewControllerTests: XCTestCase {
 
     var sut: ItemListViewController!
@@ -68,20 +90,42 @@ class ItemListViewControllerTests: XCTestCase {
 //        XCTAssertTrue(tableView.reloadDataWasCalled)
     }
     
+    func testItemSelectedNotification_PushesDetailVC() {
+        let mockNavigationController = MockNavigationController(rootViewController: sut)
+        
+        UIApplication.shared.keyWindow?.rootViewController = mockNavigationController
+        
+        // Trigger viewDidLoad() because we assume this is where sut is added as an observer to NotificationCenter.default
+        _ = sut.view
+      
+        // Post the notification expected by sut
+        let notification = Notification(name: Notification.Name(rawValue: "ItemSelectedNotification"), object: self, userInfo: ["index": 1])
+        
+        NotificationCenter.default.post(notification)
+        
+        guard let detailViewController = mockNavigationController.pushedViewController as? DetailViewController else {
+            XCTFail(); return
+        }
+        
+        guard let detailItemManager = detailViewController.itemInfo?.0 else {
+            XCTFail(); return
+        }
+        
+        guard let index = detailViewController.itemInfo?.1 else {
+            XCTFail(); return
+        }
+
+        _ = detailViewController.view
+        
+        XCTAssertNotNil(detailViewController.titleLabel)
+        XCTAssertTrue(detailItemManager === sut.itemManager)
+        XCTAssertEqual(index, 1)
+    }
+    
     override func tearDown() {
         super.tearDown()
         sut = nil
     }
 }
 
-extension ItemListViewControllerTests {
-    
-    class MockTableView: UITableView {
-        
-        var reloadDataWasCalled: Bool = false
-        
-        override func reloadData() {
-            reloadDataWasCalled = true
-        }
-    }
-}
+

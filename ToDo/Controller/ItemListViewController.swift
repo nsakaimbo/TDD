@@ -8,6 +8,11 @@
 
 import UIKit
 
+fileprivate extension Selector {
+    static let pushDetailViewController = #selector(ItemListViewController.pushDetailViewController(_:))
+}
+
+
 class ItemListViewController: UIViewController {
 
     @IBOutlet var tableView: UITableView! {
@@ -24,6 +29,8 @@ class ItemListViewController: UIViewController {
         tableView.dataSource = tableViewDelegateDataSource
         tableView.delegate = tableViewDelegateDataSource
         tableViewDelegateDataSource.itemManager = itemManager
+        
+        NotificationCenter.default.addObserver(self, selector: .pushDetailViewController, name: Notification.Name(rawValue: "ItemSelectedNotification"), object: nil)
     }
    
     override func viewWillAppear(_ animated: Bool) {
@@ -38,6 +45,21 @@ class ItemListViewController: UIViewController {
             
             nextViewController.itemManager = itemManager
             present(nextViewController, animated: true, completion: nil)
+        }
+    }
+    
+    func pushDetailViewController(_ notification: Notification) {
+        
+        guard let index = notification.userInfo?["index"] as? Int else {
+            fatalError()
+        }
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let vc = storyboard.instantiateViewController(withIdentifier: String(describing: DetailViewController.self)) as? DetailViewController {
+            
+            vc.itemInfo = (itemManager, index)
+            self.navigationController?.pushViewController(vc, animated: true)
+            
         }
     }
 }
