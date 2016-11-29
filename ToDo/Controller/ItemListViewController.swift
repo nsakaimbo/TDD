@@ -16,13 +16,19 @@ class ItemListViewController: UIViewController {
             tableView.separatorInset = UIEdgeInsets.zero
         }
     }
-    @IBOutlet var tableViewDelegateDataSource: (UITableViewDataSource & UITableViewDelegate)!
+    @IBOutlet var tableViewDelegateDataSource: (UITableViewDataSource & UITableViewDelegate & ItemManagerSettable)!
     
     let itemManager = ItemManager()
     
     override func viewDidLoad() {
         tableView.dataSource = tableViewDelegateDataSource
         tableView.delegate = tableViewDelegateDataSource
+        tableViewDelegateDataSource.itemManager = itemManager
+    }
+   
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
     }
     
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {

@@ -8,12 +8,16 @@
 
 import UIKit
 
+@objc protocol ItemManagerSettable {
+    var itemManager: ItemManager? { get set }
+}
+
 enum Section: Int {
     case ToDo
     case Done
 }
 
-class ItemListDataProvider: NSObject, UITableViewDataSource, UITableViewDelegate {
+class ItemListDataProvider: NSObject, UITableViewDataSource, UITableViewDelegate, ItemManagerSettable {
 
     var itemManager: ItemManager?
     
