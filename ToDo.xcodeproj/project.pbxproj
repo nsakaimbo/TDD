@@ -236,6 +236,7 @@
 				5FE7F9AA1D74739E00A2E4E6 /* Sources */,
 				5FE7F9AB1D74739E00A2E4E6 /* Frameworks */,
 				5FE7F9AC1D74739E00A2E4E6 /* Resources */,
+				5FCEDCDF1DED120D000E39A0 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -253,6 +254,7 @@
 				5FE7F9BE1D74739E00A2E4E6 /* Sources */,
 				5FE7F9BF1D74739E00A2E4E6 /* Frameworks */,
 				5FE7F9C01D74739E00A2E4E6 /* Resources */,
+				5FCEDCE01DED13B6000E39A0 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -328,6 +330,35 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5FCEDCDF1DED120D000E39A0 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "TAGS=\"TODO:|FIXME:\"\nfind \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" -or -name \"*.swift\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\"";
+		};
+		5FCEDCE01DED13B6000E39A0 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "TAGS=\"TODO:|FIXME:\"\nfind \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" -or -name \"*.swift\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\"";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5FE7F9AA1D74739E00A2E4E6 /* Sources */ = {
