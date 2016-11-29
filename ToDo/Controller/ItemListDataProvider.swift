@@ -103,4 +103,20 @@ class ItemListDataProvider: NSObject, UITableViewDataSource, UITableViewDelegate
         
         tableView.reloadData()
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        guard let section = Section(rawValue: indexPath.section) else {
+            fatalError("Invalid section when selecting  row")
+        }
+        
+        switch section {
+        case .ToDo:
+            let notification = Notification(name: Notification.Name(rawValue: "ItemSelectedNotification"), object: self, userInfo: ["index": indexPath.row])
+            
+            NotificationCenter.default.post(notification)
+        default:
+            break
+        }
+    }
 }
