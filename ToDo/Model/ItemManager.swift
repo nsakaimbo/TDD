@@ -25,13 +25,20 @@ class ItemManager: NSObject {
         
         NotificationCenter.default.addObserver(self, selector: .save, name: Notification.Name.UIApplicationWillResignActive, object: nil)
         
-        guard let nsToDoItems = NSArray(contentsOf: toDoPathURL) as? [NSDictionary] else {
-           return
+        if let nsToDoItems = NSArray(contentsOf: toDoPathURL) as? [NSDictionary] {
+            nsToDoItems.forEach {
+                if let toDoItem = ToDoItem(dict: $0) {
+                    toDoItems.append(toDoItem)
+                }
+            }
         }
         
-        nsToDoItems.forEach {
-            if let toDoItem = ToDoItem(dict: $0) {
-                toDoItems.append(toDoItem)
+        if let nsDoneItems = NSArray(contentsOf: donePathURL) as? [NSDictionary] {
+            
+            nsDoneItems.forEach {
+                if let toDoItem = ToDoItem(dict: $0) {
+                    doneItems.append(toDoItem)
+                }
             }
         }
     }
@@ -79,9 +86,23 @@ class ItemManager: NSObject {
         return documentURL.appendingPathComponent("toDoItems.plist")
     }
     
+    var donePathURL: URL {
+        let fileURLs = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        
+        guard let documentURL = fileURLs.first else {
+            fatalError("Something went wrong. Documents url could not be found")
+        }
+        
+        return documentURL.appendingPathComponent("doneItems.plist")
+    }
+    
     func save() {
        
         let nsToDoItems = toDoItems.map {
+            return $0.plistDict
+        }
+       
+        let nsDoneItems = doneItems.map {
             return $0.plistDict
         }
         
@@ -90,6 +111,17 @@ class ItemManager: NSObject {
         } else {
             do {
                 try FileManager.default.removeItem(at: toDoPathURL)
+            }
+            catch {
+                print(error)
+            }
+        }
+        
+        if nsDoneItems.count > 0 {
+            (nsDoneItems as NSArray).write(to: donePathURL, atomically: true)
+        } else {
+            do {
+                try FileManager.default.removeItem(at: donePathURL)
             }
             catch {
                 print(error)
