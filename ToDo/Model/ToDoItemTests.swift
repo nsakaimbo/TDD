@@ -87,4 +87,22 @@ class ToDoItemTests: XCTestCase {
         
         XCTAssertEqual(location.name, item.location?.name, "Initializer should set the location")
     }
+    
+    func test_HasPlistDictionaryProperty() {
+        let item = ToDoItem(title: "first")
+        let dictionary = item.plistDict
+        
+        XCTAssertNotNil(dictionary)
+        XCTAssertTrue(dictionary is NSDictionary)
+    }
+    
+    func test_CanBeCreatedFromPlistDictionary() {
+        let location = Location(name: "home")
+        let item = ToDoItem(title: "home", itemDescription: "test description", timestamp: 1.0, location: location)
+        
+        let dict = item.plistDict
+        let recreatedItem = ToDoItem(dict: dict)
+        
+        XCTAssertEqual(item, recreatedItem)
+    }
 }

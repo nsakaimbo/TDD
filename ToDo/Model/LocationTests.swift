@@ -79,6 +79,21 @@ class LocationTests: XCTestCase {
         
     XCTAssertEqual(testCoordinate.latitude, location.coordinate?.latitude, "Initializer should set latitude")
     
-    XCTAssertEqual(testCoordinate.longitude, location.coordinate?.longitude, "Initializer should set longitude")}
-
+    XCTAssertEqual(testCoordinate.longitude, location.coordinate?.longitude, "Initializer should set longitude")
+    }
+    
+    // MARK: Serialization/Deserialization
+    
+    func test_CanBeSerializedAndDesiarlized() {
+        let location = Location(name: "home", coordinate: CLLocationCoordinate2D(latitude: 50.0, longitude: 6.0))
+        
+        let dict = location.plistDict
+        XCTAssertNotNil(dict)
+        XCTAssertTrue(dict is NSDictionary)
+        
+        XCTAssertNotNil(dict)
+        let recreatedLocation = Location(dict: dict)
+        
+        XCTAssertEqual(location, recreatedLocation)
+    }
 }

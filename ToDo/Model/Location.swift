@@ -16,6 +16,41 @@ struct Location: Equatable {
         self.name = name
         self.coordinate = coordinate
     }
+    
+    private let nameKey = "nameKey"
+    private let latitudeKey = "latitudeKey"
+    private let longitudeKey = "longitudeKey"
+    
+    var plistDict: NSDictionary {
+   
+        var dict = [String:AnyObject]()
+        
+        dict[nameKey] = name as NSString
+    
+        if let coordinate = coordinate {
+            dict[latitudeKey] = coordinate.latitude as NSNumber
+            dict[longitudeKey] = coordinate.longitude as NSNumber
+        }
+        
+        return dict as NSDictionary
+    }
+    
+    init?(dict: NSDictionary) {
+        guard let name = dict[nameKey] as? String else {
+            return nil
+        }
+        
+        let coordinate: CLLocationCoordinate2D?
+        
+        if let latitude = dict[latitudeKey] as? Double,
+            let longitude = dict[longitudeKey] as? Double {
+            coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        } else {
+            coordinate = nil
+        }
+        self.name = name
+        self.coordinate = coordinate
+    }
 }
 
 func == (lhs: Location, rhs: Location) -> Bool {
