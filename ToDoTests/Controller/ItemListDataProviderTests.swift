@@ -67,12 +67,14 @@ class ItemListDataProviderTests: XCTestCase {
     // MARK: Section and row count
     
     func testNumberOfSectionsIsTwo() {
+        tableView.reloadData()
         XCTAssertEqual(tableView.numberOfSections, 2)
     }
     
     func testNumberOfRowsInFirstSection_IsToDoCount() {
         
         sut.itemManager?.addItem(ToDoItem(title: "first"))
+        tableView.reloadData()
         XCTAssertEqual(tableView.numberOfRows(inSection: 0), 1)
         
         sut.itemManager?.addItem(ToDoItem(title: "second"))
@@ -85,6 +87,7 @@ class ItemListDataProviderTests: XCTestCase {
         sut.itemManager?.addItem(ToDoItem(title: "second"))
         
         sut.itemManager?.checkItemAtIndex(0)
+        tableView.reloadData()
         XCTAssertEqual(tableView.numberOfRows(inSection: 1), 1)
         
         sut.itemManager?.checkItemAtIndex(0)

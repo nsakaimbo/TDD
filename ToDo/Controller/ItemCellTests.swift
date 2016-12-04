@@ -39,6 +39,7 @@ class ItemCellTests: XCTestCase {
         let tableView = controller.tableView
         let provider = FakeDataSource()
         tableView?.dataSource = provider
+        tableView?.reloadData()
         
         sut = tableView?.dequeueReusableCell(withIdentifier: String(describing: ItemCell.self), for: IndexPath(row: 0, section: 0)) as! ItemCell
     }
