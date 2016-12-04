@@ -8,6 +8,10 @@
 
 import Foundation
 
+fileprivate extension Selector {
+    static let save = #selector(ItemManager.save)
+}
+
 class ItemManager: NSObject {
    
     var toDoCount: Int { return toDoItems.count }
@@ -15,6 +19,27 @@ class ItemManager: NSObject {
    
     fileprivate var toDoItems = [ToDoItem]()
     fileprivate var doneItems = [ToDoItem]()
+   
+    override init() {
+        super.init()
+        
+        NotificationCenter.default.addObserver(self, selector: .save, name: Notification.Name.UIApplicationWillResignActive, object: nil)
+        
+        guard let nsToDoItems = NSArray(contentsOf: toDoPathURL) as? [NSDictionary] else {
+           return
+        }
+        
+        nsToDoItems.forEach {
+            if let toDoItem = ToDoItem(dict: $0) {
+                toDoItems.append(toDoItem)
+            }
+        }
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+        save()
+    }
     
     func addItem(_ item: ToDoItem) {
         guard !toDoItems.contains(item) else { return }
@@ -42,5 +67,33 @@ class ItemManager: NSObject {
     func removeAllItems() {
         toDoItems.removeAll()
         doneItems.removeAll()
+    }
+   
+    var toDoPathURL: URL {
+        let fileURLs = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        
+        guard let documentURL = fileURLs.first else {
+            fatalError("Something went wrong. Documents url could not be found")
+        }
+        
+        return documentURL.appendingPathComponent("toDoItems.plist")
+    }
+    
+    func save() {
+       
+        let nsToDoItems = toDoItems.map {
+            return $0.plistDict
+        }
+        
+        if nsToDoItems.count > 0 {
+            (nsToDoItems as NSArray).write(to: toDoPathURL, atomically: true)
+        } else {
+            do {
+                try FileManager.default.removeItem(at: toDoPathURL)
+            }
+            catch {
+                print(error)
+            }
+        }
     }
 }

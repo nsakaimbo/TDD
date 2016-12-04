@@ -140,9 +140,7 @@ class InputViewControllerTests: XCTestCase {
             
             XCTAssertEqualWithAccuracy(latitude, 37.3316851, accuracy: 0.0001)
             
-            
             XCTAssertEqualWithAccuracy(longitude, -122.0300674, accuracy: 0.0001)
-           
             
             expectationForGeocoder.fulfill()
         }
@@ -166,6 +164,7 @@ class InputViewControllerTests: XCTestCase {
     }
     
     override func tearDown() {
+        sut.itemManager?.removeAllItems()
         sut = nil
         super.tearDown()
     }

@@ -17,6 +17,11 @@ class ItemManagerTests: XCTestCase {
         sut = ItemManager()
     }
     
+    override func tearDown() {
+        sut.removeAllItems()
+        sut = nil
+    }
+    
     func testToDoCount_Initially_ShouldBeZero() {
         
         XCTAssertEqual(sut.toDoCount, 0, "Initially toDo count should be 0")
@@ -98,4 +103,26 @@ class ItemManagerTests: XCTestCase {
         
         XCTAssertEqual(sut.toDoCount, 1)
     }
+    
+    // MARK: Serialization and Deserialization
+    func test_ToDoItemGetsSerialized() {
+        var itemManager: ItemManager? = ItemManager()
+        
+        let firstItem = ToDoItem(title: "first")
+        itemManager?.addItem(firstItem)
+        
+        let secondItem = ToDoItem(title: "second")
+        itemManager?.addItem(secondItem)
+        
+        NotificationCenter.default.post(name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
+        
+        itemManager = nil
+        XCTAssertNil(itemManager)
+        
+        itemManager = ItemManager()
+        XCTAssertEqual(itemManager?.toDoCount, 2)
+        XCTAssertEqual(itemManager?.itemAtIndex(0), firstItem)
+        XCTAssertEqual(itemManager?.itemAtIndex(1), secondItem)
+    }
 }
+

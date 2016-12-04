@@ -166,9 +166,14 @@ class ItemListDataProviderTests: XCTestCase {
     }
 
     override func tearDown() {
-        super.tearDown()
+        
+        sut.itemManager?.removeAllItems()
+        sut.itemManager = nil
+        
         sut = nil
         tableView = nil
+        
+        super.tearDown()
     }
     
     // MARK: - Checking Items

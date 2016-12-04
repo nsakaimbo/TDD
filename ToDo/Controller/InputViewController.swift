@@ -42,6 +42,7 @@ class InputViewController: UIViewController {
     }
     
     // Methods
+    /// Adds an item to the ItemManager
     func save() {
         
         guard let title = titleTextField.text,
