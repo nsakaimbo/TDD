@@ -14,7 +14,7 @@
         <!--Item List View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="ItemListViewController" id="BYZ-38-t0r" customClass="ItemListViewController" customModule="ToDo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ItemListViewController" automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="ItemListViewController" customModule="ToDo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -26,7 +26,6 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="15" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="0BB-kB-bFg">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="0.0" reuseIdentifier="ItemCell" id="5Tt-xD-KGZ" customClass="ItemCell" customModule="ToDo" customModuleProvider="target">
@@ -79,10 +78,10 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="0BB-kB-bFg" secondAttribute="bottom" id="7iE-jI-RdH"/>
                             <constraint firstAttribute="trailing" secondItem="0BB-kB-bFg" secondAttribute="trailing" id="Jbw-CQ-5Vs"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="0BB-kB-bFg" secondAttribute="bottom" id="qlr-xs-6jq"/>
+                            <constraint firstItem="0BB-kB-bFg" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="lmb-cX-q1l"/>
                             <constraint firstItem="0BB-kB-bFg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="rTg-6B-wN3"/>
-                            <constraint firstItem="0BB-kB-bFg" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="w4r-oC-yUu"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Oht-dp-JGB">
