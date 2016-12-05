@@ -11,6 +11,7 @@ import UIKit
 
 fileprivate extension Selector {
     static let save = #selector(InputViewController.save)
+    static let cancel = #selector(InputViewController.cancel)
 }
 
 class InputViewController: UIViewController {
@@ -39,6 +40,7 @@ class InputViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         saveButton.addTarget(self, action: .save, for: .touchUpInside)
+        cancelButton.addTarget(self, action: .cancel, for: .touchUpInside)
     }
     
     // Methods
@@ -92,6 +94,10 @@ class InputViewController: UIViewController {
             self.itemManager?.addItem(item)
         }
         
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func cancel() {
         dismiss(animated: true, completion: nil)
     }
 }

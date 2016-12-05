@@ -26,6 +26,7 @@ class ItemListViewController: UIViewController {
     let itemManager = ItemManager()
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         tableView.dataSource = tableViewDelegateDataSource
         tableView.delegate = tableViewDelegateDataSource
         tableViewDelegateDataSource.itemManager = itemManager

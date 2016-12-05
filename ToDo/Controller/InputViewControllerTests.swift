@@ -163,6 +163,20 @@ class InputViewControllerTests: XCTestCase {
         XCTAssertTrue(mockInputViewController.dismissWasCalled)
     }
     
+    func testCancel_DismissedViewController() {
+        
+        let mockInputViewController = MockInputViewController()
+        
+        mockInputViewController.titleTextField = UITextField()
+        mockInputViewController.dateTextField = UITextField()
+        mockInputViewController.locationTextField = UITextField()
+        mockInputViewController.addressTextField = UITextField()
+        mockInputViewController.descriptionTextField = UITextField()
+        
+        mockInputViewController.cancel()
+        XCTAssertTrue(mockInputViewController.dismissWasCalled)
+    }
+    
     override func tearDown() {
         sut.itemManager?.removeAllItems()
         sut = nil
