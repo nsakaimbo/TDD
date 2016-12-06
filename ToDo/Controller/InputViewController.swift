@@ -79,22 +79,25 @@ class InputViewController: UIViewController {
                     
                     let item = ToDoItem(title: title, itemDescription: description, timestamp: date?.timeIntervalSince1970, location: Location(name: locationName, coordinate: placeMark?.location?.coordinate))
                     
-                    self.itemManager?.addItem(item)
+                    DispatchQueue.main.async { [weak self] in
+                        self?.itemManager?.addItem(item)
+                        self?.dismiss(animated: true, completion: nil)
+                    }
                 }
             } else {
                 // Save Location with title only
                 let item = ToDoItem(title: title, itemDescription: description, timestamp: date?.timeIntervalSince1970, location: Location(name: locationName, coordinate: nil))
                 
                 self.itemManager?.addItem(item)
+                self.dismiss(animated: true, completion: nil)
             }
         } else {
             // Save ToDoItem with no Location
             let item = ToDoItem(title: title, itemDescription: description, timestamp: date?.timeIntervalSince1970, location: nil)
             
             self.itemManager?.addItem(item)
+            self.dismiss(animated: true, completion: nil)
         }
-        
-        dismiss(animated: true, completion: nil)
     }
     
     func cancel() {
