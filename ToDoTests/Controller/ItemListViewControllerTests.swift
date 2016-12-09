@@ -11,6 +11,30 @@ import XCTest
 
 extension ItemListViewControllerTests {
     
+    class MockItemListViewController: ItemListViewController {
+        
+        let mockTableView = MockTableView()
+        let mockDataProvider = ItemListDataProvider()
+        
+        override var tableView: UITableView! {
+            get {
+                return mockTableView
+            }
+            set {
+                
+            }
+        }
+        
+        override var tableViewDelegateDataSource: (ItemManagerSettable & UITableViewDataSource & UITableViewDelegate)! {
+            get {
+                return mockDataProvider
+            }
+            set {
+                
+            }
+        }
+    }
+    
     class MockTableView: UITableView {
         
         var reloadDataWasCalled: Bool = false
@@ -73,21 +97,12 @@ class ItemListViewControllerTests: XCTestCase {
     
     func testViewWillAppear_ReloadsTableView() {
         
-        // - We need to override the setup() method to inject an instance of MockTableView
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        sut = storyboard.instantiateViewController(withIdentifier: String(describing: ItemListViewController.self)) as! ItemListViewController
+        // This is how you test IBOutlets!
+        let mockItemListViewController = MockItemListViewController()
         
-        let tableView = MockTableView()
-        sut.tableView = tableView
-        
-        _ = sut.view
-        
-        sut.beginAppearanceTransition(true, animated: true)
-        sut.endAppearanceTransition()
-        // TODO: The functionality works, but have not been able to set up this test correctly.
-        // - Not sure what isn't quite right about the mock table view setup
-        // - Tried swapping the IBOutlet for a non-IB view property but that didn't seem to do the trick.
-//        XCTAssertTrue(tableView.reloadDataWasCalled)
+        mockItemListViewController.beginAppearanceTransition(true, animated: true)
+        mockItemListViewController.endAppearanceTransition()
+        XCTAssertTrue((mockItemListViewController.tableView as! MockTableView).reloadDataWasCalled)
     }
     
     func testItemSelectedNotification_PushesDetailVC() {
