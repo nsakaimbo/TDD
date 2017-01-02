@@ -28,7 +28,9 @@ class DetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        guard let itemInfo = itemInfo else { return }
+        guard let itemInfo = itemInfo else {
+            fatalError("Error. Item Info not set for DetailViewController.")
+        }
         
         let item = itemInfo.0.itemAtIndex(itemInfo.1)
         
@@ -50,7 +52,9 @@ class DetailViewController: UIViewController {
     }
     
     func checkItem() {
-        guard let itemInfo = itemInfo else { return }
+        guard let itemInfo = itemInfo else {
+            fatalError("Error. Item Info not set for DetailViewController.")
+        }
         
         itemInfo.0.checkItemAtIndex(itemInfo.1)
     }
