@@ -54,6 +54,14 @@ class InputViewControllerTests: XCTestCase {
     }
     
     func testSave_UsesGeocoderToGetCoordinateFromAddress() {
+        
+        sut = MockInputViewController()
+        sut.titleTextField = UITextField()
+        sut.dateTextField = UITextField()
+        sut.locationTextField = UITextField()
+        sut.addressTextField = UITextField()
+        sut.descriptionTextField = UITextField()
+        
         sut.titleTextField.text = "test title"
         sut.dateTextField.text = "02/22/2016"
         sut.locationTextField.text = "test location"
@@ -65,12 +73,21 @@ class InputViewControllerTests: XCTestCase {
         
         sut.itemManager = ItemManager()
         
+        // Save calls addItem(_:) on a different thread, so the assertions will be called before the item is added to the item manager.
+        // We need to make this test asynchronous.
+        let expectationForItemSaved = expectation(description: "blah")
+        (sut as! MockInputViewController).completionHandler = {
+            expectationForItemSaved.fulfill()
+        }
+        
         sut.save()
         
         placemark = MockPlacemark()
         let coordinate = CLLocationCoordinate2D(latitude: 37.3316851, longitude: -122.0300674)
         placemark.mockCoordinate = coordinate
         mockGeocoder.completionHandler?([placemark], nil)
+        
+        waitForExpectations(timeout: 1, handler: nil)
         
         let item = sut.itemManager?.itemAtIndex(0)
         
@@ -210,9 +227,12 @@ extension InputViewControllerTests {
         
         var dismissWasCalled: Bool = false
         
+        var completionHandler: (()-> Void)?
+        
         override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
             
             dismissWasCalled = true
+            completionHandler?()
         }
     }
 }
